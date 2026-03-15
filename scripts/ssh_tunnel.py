@@ -83,7 +83,7 @@ def ssh_tunnel(host: str = LOCALHOST_RUN) -> None:
 
     port = cmd_opts.port if cmd_opts.port else 7860
 
-    arg_string = f"ssh -R 80:127.0.0.1:{port} -o StrictHostKeyChecking=no -i {ssh_path.as_posix()} {host}"
+    arg_string = f"ssh -T -R 80:127.0.0.1:{port} -o StrictHostKeyChecking=no -i {ssh_path.as_posix()} {host}"
     args = shlex.split(arg_string)
 
     tunnel = subprocess.Popen(
